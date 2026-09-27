@@ -5,7 +5,7 @@ export const metadata = {
 
 // Server component: fetch data directly
 async function getCourses() {
-  const res = await fetch('https://codepion.com/api/courses', {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
     // cache: 'force-cache', // => SSG (Static Site Generation)
     next: { revalidate: 60 }, // regenerates every 60 seconds => ISR (Incremental Site Regeneration)
     // cache: 'no-store', // server-rendered on every request => SSR
@@ -29,7 +29,7 @@ export default async function CoursesPage() {
             className='border rounded-lg p-4 hover:bg-gray-50 transition'
           >
             <h2 className='text-lg font-medium'>{course.title}</h2>
-            <p className='text-gray-600 text-sm mt-1'>{course.description}</p>
+            <p className='text-gray-600 text-sm mt-1'>{course.body}</p>
           </li>
         ))}
       </ul>
